@@ -17,6 +17,7 @@ router.post('/user/signup', UserController.createUser)
 router.put('/user/:id', Auth.auth, UserController.updateUser)
 router.delete('/user/:id', Auth.auth, UserController.deleteUser)
 
+router.get('/user/:user_id/docs', DocsController.getAllDocs)
 router.get('/user/:user_id/doc/:id', DocsController.getDoc)
 router.post('/user/:user_id/doc', DocsController.addDoc)
 router.put('/user/:user_id/doc/:id', Auth.auth, DocsController.updateDoc)

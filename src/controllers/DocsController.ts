@@ -2,6 +2,15 @@ import { Request, Response } from "express";
 import user from "../services/user";
 import docs from "../services/docs";
 
+const getAllDocs = async (req: Request, res: Response) => {
+  if (req.params.user_id) {
+    const allDocs = await docs.getAll(parseInt(req.params.user_id))
+    res.json({ docs: allDocs })
+  } else {
+    res.json({ error: 'Usuario não existe' })
+  }
+}
+
 const getDoc = async (req: Request, res: Response) => {
   if(req.params.user_id && req.params.id) {
     const userId  = req.params.user_id
@@ -105,4 +114,4 @@ const deleteDoc = async (req: Request, res: Response) => {
   }
 } 
 
-export default { getDoc, addDoc, updateDoc, deleteDoc }
+export default { getAllDocs, getDoc, addDoc, updateDoc, deleteDoc }

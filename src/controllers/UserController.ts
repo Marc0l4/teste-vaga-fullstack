@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
 import user from '../services/user'
 import Auth from '../auths/jwt'
+import docs from '../services/docs'
+import { Doc } from '../types/Doc'
 
 const createUser = async (req: Request, res: Response) => {
   if(req.body.name && req.body.email) {
@@ -55,7 +57,14 @@ const getAllUsers = async (req: Request, res: Response) => {
 const getUser = async (req: Request, res: Response) => {
   if (req.params.id) {
     const User = await user.getOne(parseInt(req.params.id))
-    res.json({ user: User })
+    if(User) {
+      const documents = await docs.getAll(parseInt(req.params.id))
+      if(documents) {
+        res.json({ user: User, documents })
+      } else {
+        res.json({ user: User })
+      }
+    }
   } else {
     res.json({ error: 'Usuario não encontrado' })
   }

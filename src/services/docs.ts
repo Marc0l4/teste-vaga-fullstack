@@ -1,5 +1,18 @@
 import { PrismaClient, Prisma } from '@prisma/client'
+import { Doc } from '../types/Doc'
 const prisma = new PrismaClient()
+
+const getAll = async (id: number) => {
+  try {
+    const docs = await prisma.documents.findMany()
+    if(docs) {
+      const userDocs: Doc[] = docs.filter(i => i.userId === id)
+      return userDocs
+    }
+  } catch (err) {
+    return false
+  }
+}
 
 const getOne = async (id: number) => {
   try {
@@ -35,4 +48,4 @@ export const remove = async (id: number) => {
   }
 }
 
-export default { create, getOne, update, remove }
+export default { create, getAll, getOne, update, remove }
