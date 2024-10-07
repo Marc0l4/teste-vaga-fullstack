@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database/dev.db"
+}
+
+model User {
+  id    Int         @id @default(autoincrement())
+  name  String
+  email String      @unique
+  docs  Documents[]
+}
+
+model Documents {
+  id     Int     @id @default(autoincrement())
+  name   String
+  status Boolean
+  User   User?   @relation(fields: [userId], references: [id])
+  userId Int?
+}

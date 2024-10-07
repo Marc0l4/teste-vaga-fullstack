@@ -1,0 +1,33 @@
+{
+  "name": "teste-fullstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "tsup src",
+    "dev": "tsx watch --env-file .env src/server.ts",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "passport-http": "^0.3.0",
+    "prisma": "^5.20.0",
+    "tsup": "^8.3.0",
+    "tsx": "^4.19.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.7.4",
+    "eslint": "^8.57.1",
+    "typescript": "^5.6.2"
+  }
+}
