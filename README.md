@@ -12,7 +12,7 @@ a api consta com 10 rotas, sendo elas
 
 "/users" para acessar todos usuarios
 
-"/user/:id" para obter apenas um usuario
+"/user/:id" para obter apenas um usuario e se ele tiver documentos cadastrados, exibira tambem
 
 "/user/signup" para fazer o cadastro e receber um token jwt
 
@@ -21,6 +21,8 @@ a api consta com 10 rotas, sendo elas
 "/user/:id" com metodo put para editar um usuario
 
 "/user/:id" com metodo delete para remover um usuario
+
+"/user/:user_id/docs" para mostrar todos os documentos daquele usuario
 
 "/user/:user_id/doc/:id" para acessar um documento de um usuario especifico
 
