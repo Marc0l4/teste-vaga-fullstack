@@ -12,7 +12,7 @@ router.get('/ping', (req: Request, res: Response) => {
 
 router.get('/users', UserController.getAllUsers)
 router.get('/user/:id', UserController.getUser)
-router.post('/user/signin', Auth.auth, UserController.login)
+router.post('/user/signin', UserController.login)
 router.post('/user/signup', UserController.createUser)
 router.put('/user/:id', Auth.auth, UserController.updateUser)
 router.delete('/user/:id', Auth.auth, UserController.deleteUser)
